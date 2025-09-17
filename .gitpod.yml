@@ -1,0 +1,18 @@
+# .gitpod.yml
+image:
+  file: .gitpod.Dockerfile
+
+tasks:
+  - name: Build & Run
+    init: |
+      docker-compose build
+    command: |
+      docker-compose up
+
+ports:
+  - port: 8501
+    onOpen: open-preview
+    name: Streamlit UI
+  - port: 6379
+    onOpen: ignore
+    name: Redis
